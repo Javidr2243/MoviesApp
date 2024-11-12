@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct TestUserSimulations: View {
-    var userSimulations: [UserSimulationElement]  // Passes in userSimData
+    @StateObject var viewModel: UserSimulationsViewModel
 
     var body: some View {
-        List(userSimulations, id: \.id) { user in
+        List(viewModel.userSimulations, id: \.id) { user in
             Section(header: Text(user.username).font(.headline)) {
                 ForEach(user.moviesWatched, id: \.movieID) { movie in
                     VStack(alignment: .leading) {
-                        Text("Movie ID: \(movie.movieID)")
+                        // Display movie ID and title
+                        Text("ID: \(movie.movieID) - Title: \(viewModel.movieTitle(for: movie.movieID))")
+                            .font(.headline)
                         Text("Rating: \(movie.rating, specifier: "%.1f")")
                             .foregroundColor(.gray)
                     }
@@ -29,6 +31,5 @@ struct TestUserSimulations: View {
 
 // Preview
 #Preview {
-    TestUserSimulations(userSimulations: userSimData)
+    TestUserSimulations(viewModel: UserSimulationsViewModel(userSimulations: userSimData, movies: movieData))
 }
-

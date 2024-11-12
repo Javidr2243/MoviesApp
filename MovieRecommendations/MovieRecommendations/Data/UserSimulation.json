@@ -58,7 +58,7 @@
             { "movieId": 3501, "rating": 4.7 },
             { "movieId": 2502, "rating": 3.4 },
             { "movieId": 1503, "rating": 4.9 },
-            { "movieId": 7504, "rating": 2.5 },
+            { "movieId": 3504, "rating": 2.5 },
             { "movieId": 3505, "rating": 4.8 },
             { "movieId": 2506, "rating": 3.2 },
             { "movieId": 1507, "rating": 5.0 }
@@ -68,12 +68,12 @@
         "id": 7,
         "username": "Frank",
         "moviesWatched": [
-            { "movieId": 6061, "rating": 3.9 },
+            { "movieId": 6021, "rating": 3.9 },
             { "movieId": 6042, "rating": 4.4 },
             { "movieId": 6033, "rating": 4.1 },
-            { "movieId": 6094, "rating": 3.6 },
+            { "movieId": 5094, "rating": 3.6 },
             { "movieId": 6035, "rating": 5.0 },
-            { "movieId": 4606, "rating": 4.2 },
+            { "movieId": 2206, "rating": 4.2 },
             { "movieId": 2607, "rating": 4.8 }
         ]
     }
