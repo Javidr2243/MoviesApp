@@ -9,7 +9,7 @@ import SwiftData
 
 @Model
 class UserRating {
-    @Attribute(.unique) var id: UUID = UUID()
+    @Attribute(.unique) var rating_id: UUID = UUID()
     var movieId: Int
     var userRating: Double
     var review: String?

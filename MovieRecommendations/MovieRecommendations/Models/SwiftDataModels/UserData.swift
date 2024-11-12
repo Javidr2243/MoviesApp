@@ -10,11 +10,17 @@ import SwiftData
 
 @Model
 class UserData {
-    @Attribute(.unique) var id: UUID = UUID()
+    @Attribute(.unique) var id: UUID = UUID()  // Automatically generates a unique UUID
     var username: String
-    var ratedMovies: [UserRating] = []  // One-to-many relationship with UserRating
+    var ratedMovies: [UserRating] = []
 
     init(username: String) {
         self.username = username
+    }
+
+    var moviesWatched: [MoviesWatched] {
+        return ratedMovies.map { userRating in
+            MoviesWatched(movieID: userRating.movieId, rating: userRating.userRating)
+        }
     }
 }

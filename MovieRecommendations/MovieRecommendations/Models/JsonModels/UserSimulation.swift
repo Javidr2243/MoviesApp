@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - UserSimulationElement
 class UserSimulationElement: Codable {
-    let id: Int
+    var id: Int  // Unique ID
     let username: String
     let moviesWatched: [MoviesWatched]
 
