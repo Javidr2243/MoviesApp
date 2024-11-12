@@ -7,7 +7,7 @@
 
 import Foundation
 
-var movieData: [MovieElement] = load("csvjson.json")
+var movieData: [MovieElement] = load("csvjson-2.json")
 
 var userSimData: [UserSimulationElement] = load("UserSimulation.json")
 
