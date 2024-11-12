@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		30BCB7D02CE21D7A009E3312 /* MovieRecommendations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieRecommendations.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		30BCB7D02CE21D7A009E3312 /* MovieRecommendations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MovieRecommendations.app; path = "/Users/jimenagallegos/Documents/Second Project/MoviesApp/MovieRecommendations/build/Debug-iphoneos/MovieRecommendations.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,16 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				30BCB7D22CE21D7A009E3312 /* MovieRecommendations */,
-				30BCB7D12CE21D7A009E3312 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		30BCB7D12CE21D7A009E3312 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				30BCB7D02CE21D7A009E3312 /* MovieRecommendations.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,7 +86,7 @@
 			mainGroup = 30BCB7C72CE21D7A009E3312;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 30BCB7D12CE21D7A009E3312 /* Products */;
+			productRefGroup = 30BCB7C72CE21D7A009E3312;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
