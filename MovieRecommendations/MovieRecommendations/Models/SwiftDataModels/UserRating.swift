@@ -13,9 +13,9 @@ class UserRating {
     var movieId: Int
     var userRating: Double
     var review: String?
-    var user: RealUser?  // Link back to RealUser for the one-to-many relationship
+    var user: UserData?  // Link back to RealUser for the one-to-many relationship
 
-    init(movieId: Int, userRating: Double, review: String? = nil, user: RealUser) {
+    init(movieId: Int, userRating: Double, review: String? = nil, user: UserData) {
         self.movieId = movieId
         self.userRating = userRating
         self.review = review
