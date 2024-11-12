@@ -8,4 +8,13 @@
 import Foundation
 import SwiftData
 
+@Model
+class RealUser {
+    @Attribute(.unique) var id: UUID = UUID()
+    var username: String
+    var ratedMovies: [UserRating] = []  // One-to-many relationship with UserRating
 
+    init(username: String) {
+        self.username = username
+    }
+}

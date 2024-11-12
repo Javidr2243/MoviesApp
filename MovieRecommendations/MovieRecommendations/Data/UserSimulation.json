@@ -1,0 +1,80 @@
+[
+    {
+        "id": 2,
+        "username": "Alice",
+        "moviesWatched": [
+            { "movieId": 101, "rating": 4.5 },
+            { "movieId": 102, "rating": 3.8 },
+            { "movieId": 103, "rating": 4.0 },
+            { "movieId": 104, "rating": 2.5 },
+            { "movieId": 105, "rating": 4.7 },
+            { "movieId": 106, "rating": 3.9 },
+            { "movieId": 107, "rating": 5.0 }
+        ]
+    },
+    {
+        "id": 3,
+        "username": "Bob",
+        "moviesWatched": [
+            { "movieId": 201, "rating": 3.5 },
+            { "movieId": 202, "rating": 4.2 },
+            { "movieId": 203, "rating": 4.8 },
+            { "movieId": 204, "rating": 2.9 },
+            { "movieId": 205, "rating": 3.6 },
+            { "movieId": 206, "rating": 4.4 },
+            { "movieId": 207, "rating": 5.0 }
+        ]
+    },
+    {
+        "id": 4,
+        "username": "Charlie",
+        "moviesWatched": [
+            { "movieId": 301, "rating": 4.0 },
+            { "movieId": 302, "rating": 3.0 },
+            { "movieId": 303, "rating": 4.3 },
+            { "movieId": 304, "rating": 5.0 },
+            { "movieId": 305, "rating": 2.8 },
+            { "movieId": 306, "rating": 4.1 },
+            { "movieId": 307, "rating": 3.9 }
+        ]
+    },
+    {
+        "id": 5,
+        "username": "Diana",
+        "moviesWatched": [
+            { "movieId": 401, "rating": 3.2 },
+            { "movieId": 402, "rating": 4.5 },
+            { "movieId": 403, "rating": 4.0 },
+            { "movieId": 404, "rating": 3.8 },
+            { "movieId": 405, "rating": 4.9 },
+            { "movieId": 406, "rating": 2.6 },
+            { "movieId": 407, "rating": 4.3 }
+        ]
+    },
+    {
+        "id": 6,
+        "username": "Eve",
+        "moviesWatched": [
+            { "movieId": 501, "rating": 4.7 },
+            { "movieId": 502, "rating": 3.4 },
+            { "movieId": 503, "rating": 4.9 },
+            { "movieId": 504, "rating": 2.5 },
+            { "movieId": 505, "rating": 4.8 },
+            { "movieId": 506, "rating": 3.2 },
+            { "movieId": 507, "rating": 5.0 }
+        ]
+    },
+    {
+        "id": 7,
+        "username": "Frank",
+        "moviesWatched": [
+            { "movieId": 601, "rating": 3.9 },
+            { "movieId": 602, "rating": 4.4 },
+            { "movieId": 603, "rating": 4.1 },
+            { "movieId": 604, "rating": 3.6 },
+            { "movieId": 605, "rating": 5.0 },
+            { "movieId": 606, "rating": 4.2 },
+            { "movieId": 607, "rating": 4.8 }
+        ]
+    }
+]
