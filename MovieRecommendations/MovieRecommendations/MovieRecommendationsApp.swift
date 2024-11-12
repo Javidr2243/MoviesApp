@@ -12,7 +12,7 @@ import SwiftData
 struct MovieRecommendationsApp: App {
     
     let container: ModelContainer = {
-        let schema = Schema([UserData.self, UserRating.self])
+        let schema = Schema([UserData.self, UserRating.self, GroupSModel.self])
         let container = try! ModelContainer(for: schema, configurations: [])
         return container
     }()
