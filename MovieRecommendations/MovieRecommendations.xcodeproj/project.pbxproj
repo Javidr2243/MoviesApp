@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		300BB4C52CE4A94800B760E2 /* MovieRecommendations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieRecommendations.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		300BB4C52CE4A94800B760E2 /* MovieRecommendations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MovieRecommendations.app; path = "/Users/javierdavilaruiz/Documents/Apple Developer Academy/Challenges/Negroni Challenge/MoviesApp/MovieRecommendations/build/Debug-iphoneos/MovieRecommendations.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,7 +33,6 @@
 			isa = PBXGroup;
 			children = (
 				30BCB7D22CE21D7A009E3312 /* MovieRecommendations */,
-				300BB4C52CE4A94800B760E2 /* MovieRecommendations.app */,
 			);
 			sourceTree = "<group>";
 		};
