@@ -34,7 +34,7 @@ struct ListofGroups: View {
                     }
                     
                     ForEach(groups) { grupo in
-                        NavigationLink(destination: RecomenderView_Participants(group: grupo)) {
+                        NavigationLink(destination: NewWatchpartyMembers(group: grupo)) {
                             HStack(){
                                 Text(grupo.image)
                                     .background(
