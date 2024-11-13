@@ -41,40 +41,54 @@ struct RecomendationsView: View {
     @State private var activeCardIndex: Int? = 0
     
     var body: some View {
-        VStack {
-            Spacer()
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 20) {
-                    ForEach(0..<movies.count, id: \.self) { index in
-                        VStack {
-                            Rectangle()
-                                .fill(.red)
-                                .frame(width: 350, height: 500)
-                            Text(movies[index].name)
-                                .font(.headline)
-                            
-                            Text("Genres: \(movies[index].movieGenre.joined(separator: ", "))")
-                                .font(.footnote)
-                                .foregroundColor(.gray)
-                            
-                            
+        ZStack {
+            Color(.black)
+            VStack {
+                Spacer()
+                Text("Recommendations")
+                    .font(.title)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color.white)
+                    .offset(y: -180)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 20) {
+                        ForEach(0..<movies.count, id: \.self) { index in
+                            VStack {
+                                Rectangle()
+                                    .fill(.red)
+                                    .frame(width: 350, height: 500)
+                                    .cornerRadius(20)
+                                
+                                
+                                Text(movies[index].name)
+                                    .font(.headline)
+                                    .foregroundColor(Color.white)
+                                    .padding(.top)
+                                
+                                Text("Genres: \(movies[index].movieGenre.joined(separator: ", "))")
+                                    .font(.footnote)
+                                    .foregroundColor(.gray)
+                                
+                                
+                            }
+                            .padding()
+                            .id(index)
                         }
-                        .padding()
-                        .id(index)
                     }
+                    .padding()
                 }
-                .padding()
+                .scrollTargetLayout()
+                .scrollTargetBehavior(.viewAligned)
+                .scrollPosition(id: $activeCardIndex)
+                .scrollIndicators(.never)
+                .frame(height: 200)
+                
+                pagingControl
+                Spacer()
             }
-            .scrollTargetLayout()
-            .scrollTargetBehavior(.viewAligned)
-            .scrollPosition(id: $activeCardIndex)
-            .scrollIndicators(.never)
-            .frame(height: 200)
-            
-            pagingControl
-            Spacer()
         }
+        .ignoresSafeArea()
     }
     
     var pagingControl: some View {
