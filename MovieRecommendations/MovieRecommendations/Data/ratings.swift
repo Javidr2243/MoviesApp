@@ -14,8 +14,8 @@ struct RatingSet {
     ]
     
     static let danna: [String: Double] = [
-        "The Matrix (1999)": 5.0,
-        "The Godfather (1972)": 4.5
+        "Sabrina (1995)": 4.0,
+        "Clueless (1995)": 4.0
     ]
     
     static let gigi: [String: Double] = [
@@ -44,4 +44,8 @@ struct RatingSet {
         
         return averagedRatings
     }
+}
+
+struct Groups {
+    
 }

@@ -22,7 +22,7 @@ struct RecomenderView_Participants: View {
         NavigationView {
             VStack {
                 // Título que indica los conjuntos seleccionados
-                Text("Conjuntos seleccionados:")
+                /*Text("Conjuntos seleccionados:")
                     .font(.headline)
                     .padding(.top, 10)
                 
@@ -41,7 +41,7 @@ struct RecomenderView_Participants: View {
                             .foregroundColor(.green)
                     }
                 }
-                .padding()
+                .padding()*/
 
                 // Botones para seleccionar múltiples sets
                 HStack {

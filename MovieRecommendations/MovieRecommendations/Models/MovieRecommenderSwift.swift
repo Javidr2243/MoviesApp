@@ -14,7 +14,7 @@ public class Recommender: ObservableObject {
     func load(ratings: [String: Double]) {
             do {
                 let recommender = MovieRecommender()
-                let input = MovieRecommenderInput(items: ratings, k: 5, restrict_: [], exclude: [])
+                let input = MovieRecommenderInput(items: ratings, k: 7, restrict_: [], exclude: [])
                 
                 let result = try recommender.prediction(input: input)
                 var tempMovies = [MovieS]()
