@@ -1,73 +1,33 @@
-//
-//  RecomenderView_Participants.swift
-//  MovieRecommendations
-//
-//  Created by Jimena Gallegos on 12/11/24.
-//
-
 import SwiftUI
 import CoreML
-
-
-import SwiftUI
 import Combine
-import CoreML
 
 struct RecomenderView_Participants: View {
+    let group: Group
     @ObservedObject var recommender = Recommender()
     
-    @State private var selectedSets: [Bool] = [false, false, false] // Mantiene el estado de selección de los conjuntos
+    @State private var selectedSets: [Bool]
+    
+    init(group: Group) {
+        self.group = group
+        // Inicializamos selectedSets con el tamaño del array de personas y con todos los valores en falso
+        self._selectedSets = State(initialValue: Array(repeating: false, count: group.persons.count))
+    }
     
     var body: some View {
         NavigationView {
             VStack {
-                // Título que indica los conjuntos seleccionados
-                /*Text("Conjuntos seleccionados:")
-                    .font(.headline)
-                    .padding(.top, 10)
-                
-                // Lista de conjuntos seleccionados
-                VStack(alignment: .leading) {
-                    if selectedSets[0] {
-                        Text("Set 1: Toy Story y Star Wars")
-                            .foregroundColor(.green)
-                    }
-                    if selectedSets[1] {
-                        Text("Set 2: The Matrix y The Godfather")
-                            .foregroundColor(.green)
-                    }
-                    if selectedSets[2] {
-                        Text("Set 3: The Dark Knight y Inception")
-                            .foregroundColor(.green)
-                    }
-                }
-                .padding()*/
-
-                // Botones para seleccionar múltiples sets
+                // Botones para seleccionar múltiples sets dinámicamente usando personas
                 HStack {
-                    Button("Javier") {
-                        selectedSets[0].toggle()
+                    ForEach(group.persons.indices, id: \.self) { index in
+                        Button(group.persons[index]) {
+                            selectedSets[index].toggle()
+                        }
+                        .padding()
+                        .background(selectedSets[index] ? Color.blue : Color.gray)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
                     }
-                    .padding()
-                    .background(selectedSets[0] ? Color.blue : Color.gray)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-                    
-                    Button("Danna") {
-                        selectedSets[1].toggle()
-                    }
-                    .padding()
-                    .background(selectedSets[1] ? Color.blue : Color.gray)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-
-                    Button("Gigi") {
-                        selectedSets[2].toggle()
-                    }
-                    .padding()
-                    .background(selectedSets[2] ? Color.blue : Color.gray)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
                 }
                 
                 // Botón para combinar los sets seleccionados y cargarlos
@@ -84,7 +44,7 @@ struct RecomenderView_Participants: View {
                 List(recommender.movies) { movie in
                     VStack(alignment: .leading) {
                         Text(movie.name)
-                        Text("\(movie.score, specifier: "%.2f")")  // Mostrar el promedio con 2 decimales
+                        Text("\(movie.score, specifier: "%.2f")")
                             .font(.system(size: 14))
                             .foregroundColor(Color.gray)
                     }
@@ -98,15 +58,19 @@ struct RecomenderView_Participants: View {
     private func getSelectedSets() -> [[String: Double]] {
         var selectedSetsList = [[String: Double]]()
         
-        if selectedSets[0] { selectedSetsList.append(RatingSet.javier) }
-        if selectedSets[1] { selectedSetsList.append(RatingSet.danna) }
-        if selectedSets[2] { selectedSetsList.append(RatingSet.gigi) }
+        for (index, isSelected) in selectedSets.enumerated() {
+            if isSelected {
+                // Usa el nombre de la persona para acceder al conjunto de ratings adecuado
+                if let set = RatingSet.set(for: group.persons[index]) {
+                    selectedSetsList.append(set)
+                }
+            }
+        }
         
         return selectedSetsList
     }
 }
 
-
 #Preview {
-    RecomenderView_Participants()
+    RecomenderView_Participants(group: Group(name: "Grupo 1", persons: ["Gigi", "Javier"], image: ""))
 }

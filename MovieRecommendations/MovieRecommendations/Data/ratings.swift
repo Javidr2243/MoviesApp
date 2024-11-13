@@ -8,17 +8,27 @@
 import Foundation
 
 struct RatingSet {
-    static let javier: [String: Double] = [
+    static let Javier: [String: Double] = [
         "Toy Story (1995)": 5.0,
         "Star Wars: Episode IV - A New Hope (1997)": 4.0
     ]
     
-    static let danna: [String: Double] = [
+    static let Danna: [String: Double] = [
         "Sabrina (1995)": 4.0,
         "Clueless (1995)": 4.0
     ]
     
-    static let gigi: [String: Double] = [
+    static let Gigi: [String: Double] = [
+        "The Dark Knight (2008)": 4.8,
+        "Inception (2010)": 4.9
+    ]
+    
+    static let Jimena: [String: Double] = [
+        "The Dark Knight (2008)": 4.8,
+        "Inception (2010)": 4.9
+    ]
+    
+    static let Analia: [String: Double] = [
         "The Dark Knight (2008)": 4.8,
         "Inception (2010)": 4.9
     ]
@@ -44,8 +54,40 @@ struct RatingSet {
         
         return averagedRatings
     }
+    
+    static func set(for name: String) -> [String: Double]? {
+            switch name {
+            case "Javier":
+                return RatingSet.Javier
+            case "Danna":
+                return RatingSet.Danna
+            case "Gigi":
+                return RatingSet.Gigi
+            case "Analia":
+                return RatingSet.Analia
+            case "Jimena":
+                return RatingSet.Jimena
+            default:
+                return nil
+            }
+        }
 }
 
-struct Groups {
+
+struct Group: Identifiable {
+    let id = UUID()
+    let name: String
+    let persons: [String]
+    let image: String
+}
+
+struct DataManager {
+    static let groups: [Group] = [
+        Group(name: "Checo y Los Perez", persons: ["Jimena", "Gigi", "Danna", "Analia", "Javier"], image:"🌮"),
+        Group(name: "Group 2", persons: ["Gigi", "Javier", "Analia"], image: "😎"),
+        Group(name: "Group 3", persons: ["Gigi", "Danna", "Analia", "Jimena"], image: "👻"),
+        Group(name: "Group 4", persons: ["Danna", "Analia", "Jimena"], image: "🍿"),
+    ]
     
 }
+
