@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InsideGroupView: View {
-    let group: Group
+    let group: MoviesGroup
 
         var body: some View {
             List(group.persons, id: \.self) { persona in
@@ -19,5 +19,5 @@ struct InsideGroupView: View {
 }
 
 #Preview {
-    InsideGroupView(group: Group(name: "Grupo 1", persons: ["Gigi", "Danna"], image:""))
+    InsideGroupView(group: MoviesGroup(name: "Grupo 1", persons: ["Gigi", "Danna"], image:""))
 }

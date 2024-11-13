@@ -36,6 +36,7 @@ public class Recommender: ObservableObject {
         }
     
     
+    
     func load(ratings: [String: Double], genreFilter: [String] = []) {
             do {
                 let recommender = MovieRecommender()
@@ -52,8 +53,9 @@ public class Recommender: ObservableObject {
                 for str in result.recommendations {
                     let score = result.scores[str] ?? 0
                     let movieGenre = getGenre(for: str, genres: genres)
+                    let movieId = getMovieId(for: str, movie_id: genres)
 
-                    let movie = MovieS(name: "\(str)", score: score, movieGenre: movieGenre)
+                    let movie = MovieS(name: "\(str)", score: score, movieGenre: movieGenre, movie_id: movieId)
 
                     // Filtrar según los géneros, si se proporciona un filtro
                     if !genreFilter.isEmpty {
@@ -81,6 +83,14 @@ public class Recommender: ObservableObject {
             }
             return [] 
         }
+    
+    func getMovieId(for movieName: String, movie_id: [MovieGenre]) -> Int{
+        if let movie_ids = movie_id.first(where: { $0.title == movieName }) {
+            return movie_ids.movieId
+            }
+            return 0
+        }
+    
         
 }
 
@@ -89,4 +99,5 @@ struct MovieS: Identifiable {
     public var name: String
     public var score: Double
     public var movieGenre: [String]
+   public var movie_id: Int
 }

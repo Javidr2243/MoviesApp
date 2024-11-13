@@ -3,18 +3,18 @@ import CoreML
 import Combine
 
 struct RecomenderView_Participants: View {
-    let group: Group
+    let group: MoviesGroup
     @ObservedObject var recommender = Recommender()
     @State var combinedRatings = ["Sabrina (1995)": 4.0, "Clueless (1995)": 4.0]
     @State private var selectedSets: [Bool]
     
-    init(group: Group) {
+    init(group: MoviesGroup) {
         self.group = group
         self._selectedSets = State(initialValue: Array(repeating: false, count: group.persons.count))
     }
     
     var body: some View {
-        NavigationView {
+        //NavigationView {
             VStack {
                 HStack {
                     ForEach(group.persons.indices, id: \.self) { index in
@@ -37,12 +37,11 @@ struct RecomenderView_Participants: View {
                 .foregroundColor(.white)
                 .cornerRadius(8)
                 
-                NavigationLink(destination: NewWatchPartyView(ratings: combinedRatings)) {
+                NavigationLink(destination: NewWatchPartyView(group: group, ratings: combinedRatings)) {
                     Text("Next")
                 }
             }
-            .navigationBarTitle("CoreMLRecommender", displayMode: .inline)
-        }
+        //}
     }
     
     private func getSelectedSets() -> [[String: Double]] {
@@ -62,5 +61,5 @@ struct RecomenderView_Participants: View {
 }
 
 #Preview {
-    RecomenderView_Participants(group: Group(name: "Grupo 1", persons: ["Gigi", "Javier"], image: ""))
+    RecomenderView_Participants(group: MoviesGroup(name: "Checo y los Perez", persons: ["Gigi", "Javier"], image: "🌮"))
 }

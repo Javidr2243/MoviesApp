@@ -10,7 +10,7 @@ import SwiftUI
 struct ListofGroups: View {
     private let groups = DataManager.groups
     
-    func combinedNames(for group: Group) -> String {
+    func combinedNames(for group: MoviesGroup) -> String {
             return group.persons.joined(separator: ", ")
         }
 

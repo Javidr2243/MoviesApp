@@ -74,7 +74,7 @@ struct RatingSet {
 }
 
 
-struct Group: Identifiable {
+struct MoviesGroup: Identifiable {
     let id = UUID()
     let name: String
     let persons: [String]
@@ -82,11 +82,11 @@ struct Group: Identifiable {
 }
 
 struct DataManager {
-    static let groups: [Group] = [
-        Group(name: "Checo y Los Perez", persons: ["Jimena", "Gigi", "Danna", "Analia", "Javier"], image:"🌮"),
-        Group(name: "Group 2", persons: ["Gigi", "Javier", "Analia"], image: "😎"),
-        Group(name: "Group 3", persons: ["Gigi", "Danna", "Analia", "Jimena"], image: "👻"),
-        Group(name: "Group 4", persons: ["Danna", "Analia", "Jimena"], image: "🍿"),
+    static let groups: [MoviesGroup] = [
+        MoviesGroup(name: "Checo y Los Perez", persons: ["Jimena", "Gigi", "Danna", "Analia", "Javier"], image:"🌮"),
+        MoviesGroup(name: "Group 2", persons: ["Gigi", "Javier", "Analia"], image: "😎"),
+        MoviesGroup(name: "Group 3", persons: ["Gigi", "Danna", "Analia", "Jimena"], image: "👻"),
+        MoviesGroup(name: "Group 4", persons: ["Danna", "Analia", "Jimena"], image: "🍿"),
     ]
     
 }
