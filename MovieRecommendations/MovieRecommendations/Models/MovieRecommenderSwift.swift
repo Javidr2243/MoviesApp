@@ -36,7 +36,7 @@ public class Recommender: ObservableObject {
         }
     
     
-    func load(ratings: [String: Double], genreFilter: String? = nil) {
+    func load(ratings: [String: Double], genreFilter: [String] = []) {
             do {
                 let recommender = MovieRecommender()
                 let input = MovieRecommenderInput(items: ratings, k: 7, restrict_: [], exclude: [])
@@ -51,13 +51,18 @@ public class Recommender: ObservableObject {
                 
                 for str in result.recommendations {
                     let score = result.scores[str] ?? 0
-                    let movieGenre = getGenre(for: str, genres: genres)   // Obtener el género de la película
+                    let movieGenre = getGenre(for: str, genres: genres)
 
                     let movie = MovieS(name: "\(str)", score: score, movieGenre: movieGenre)
 
-                    // Filtrar según el género, si se proporciona un filtro
-                    if let genreFilter = genreFilter, !movie.movieGenre.contains(genreFilter) {
-                        continue
+                    // Filtrar según los géneros, si se proporciona un filtro
+                    if !genreFilter.isEmpty {
+                        let hasMatchingGenre = movie.movieGenre.contains { genre in
+                            genreFilter.contains { filter in genre.lowercased().contains(filter.lowercased()) }
+                        }
+                        if !hasMatchingGenre {
+                            continue
+                        }
                     }
 
                     tempMovies.append(movie)
@@ -71,12 +76,10 @@ public class Recommender: ObservableObject {
     }
     
     func getGenre(for movieName: String, genres: [MovieGenre]) -> [String] {
-            // Buscar el género de la película en la lista de géneros
         if let genre = genres.first(where: { $0.title == movieName }) {
-                // Dividir la cadena de géneros por el delimitador '|'
                 return genre.genres.split(separator: "|").map { String($0) }
             }
-            return []  // Si no se encuentra, devolvemos un array vacío
+            return [] 
         }
         
 }
