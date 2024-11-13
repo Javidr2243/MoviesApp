@@ -34,7 +34,7 @@ struct RecomenderView_Participants: View {
                 Button("Combinar y Obtener Recomendaciones") {
                     let selectedRatingSets = getSelectedSets()
                     let combinedRatings = RatingSet.combineSets(sets: selectedRatingSets)
-                    recommender.load(ratings: combinedRatings)
+                    recommender.load(ratings: combinedRatings, genreFilter: "Action")
                 }
                 .padding()
                 .background(Color.green)
@@ -69,6 +69,7 @@ struct RecomenderView_Participants: View {
         
         return selectedSetsList
     }
+    
 }
 
 #Preview {
