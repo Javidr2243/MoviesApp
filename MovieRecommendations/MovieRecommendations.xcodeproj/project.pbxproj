@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		C69A30EC2CE49D74008F3A32 /* MovieRecommendations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieRecommendations.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C69A30EC2CE49D74008F3A32 /* MovieRecommendations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MovieRecommendations.app; path = "/Users/dannagvalencia/Documents/Academy/MoviesApp/MovieRecommendations/build/Debug-iphoneos/MovieRecommendations.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,7 +33,6 @@
 			isa = PBXGroup;
 			children = (
 				30BCB7D22CE21D7A009E3312 /* MovieRecommendations */,
-				C69A30EC2CE49D74008F3A32 /* MovieRecommendations.app */,
 			);
 			sourceTree = "<group>";
 		};
