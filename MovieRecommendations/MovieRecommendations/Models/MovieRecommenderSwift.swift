@@ -11,6 +11,7 @@ struct MovieGenreML: Codable {
     var movieId: Int
     var title: String
     var genres: String
+    var image_id: Int
 }
 
 
@@ -19,7 +20,7 @@ public class Recommender: ObservableObject {
     @Published var movies = [MovieS]()
     
     func loadGenres() -> [MovieGenreML]? {
-            guard let url = Bundle.main.url(forResource: "csvjson", withExtension: "json") else {
+            guard let url = Bundle.main.url(forResource: "csvimages_id", withExtension: "json") else {
                 print("Error: file not found.")
                 return nil
             }
@@ -53,7 +54,7 @@ public class Recommender: ObservableObject {
                 for str in result.recommendations {
                     let score = result.scores[str] ?? 0
                     let movieGenre = getGenre(for: str, genres: genres)
-                    let movieId = getMovieId(for: str, movie_id: genres)
+                    let movieId = getMovieId(for: str, image_id: genres)
 
                     let movie = MovieS(name: "\(str)", score: score, movieGenre: movieGenre, movie_id: movieId)
 
@@ -84,9 +85,9 @@ public class Recommender: ObservableObject {
             return [] 
         }
     
-    func getMovieId(for movieName: String, movie_id: [MovieGenreML]) -> Int{
-        if let movie_ids = movie_id.first(where: { $0.title == movieName }) {
-            return movie_ids.movieId
+    func getMovieId(for movieName: String, image_id: [MovieGenreML]) -> Int{
+        if let movie_ids = image_id.first(where: { $0.title == movieName }) {
+            return movie_ids.image_id
             }
             return 0
         }
