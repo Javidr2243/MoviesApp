@@ -7,23 +7,44 @@
 
 import SwiftUI
 
+@available(iOS 16, macOS 13.0, *)
+
+
+
 struct MovieSearchView: View {
     
     @StateObject var movieSearchState = MovieSearchState()
     
+    init(){
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        UICollectionView.appearance().backgroundColor = .clear
+    }
+    
     var body: some View {
-        List {
-            ForEach(movieSearchState.movies) { movie in
-                NavigationLink(destination: MovieDetailView(movieId: movie.id, movieTitle: movie.title)) {
-                    MovieRowView(movie: movie).padding(.vertical, 8)
+        
+        ZStack {
+            Color(.black)
+            List {
+                ForEach(movieSearchState.movies) { movie in
+                    NavigationLink(destination: MovieDetailView(movieId: movie.id, movieTitle: movie.title)) {
+                        MovieRowView(movie: movie).padding(.vertical, 8)
+                    }
+                    
                 }
+                .listRowBackground(Color.black)
             }
+            .preferredColorScheme(.dark)
+            .searchable(text: $movieSearchState.query, prompt: "Search movies")
+            .overlay(overlayView)
+            .onAppear { movieSearchState.startObserve() }
+            .listStyle(.plain)
+            .navigationTitle("Search")
+            .frame(maxHeight: 700)
+            .background(.black)
+            
         }
-        .searchable(text: $movieSearchState.query, prompt: "Search movies")
-        .overlay(overlayView)
-        .onAppear { movieSearchState.startObserve() }
-        .listStyle(.plain)
-        .navigationTitle("Search")
+        .ignoresSafeArea()
+        
     }
     
     @ViewBuilder
@@ -33,12 +54,14 @@ struct MovieSearchView: View {
         case .empty:
             if movieSearchState.trimmedQuery.isEmpty {
                 EmptyPlaceholderView(text: "Search your favorite movie", image: Image(systemName: "magnifyingglass"))
+                    .foregroundStyle(.white)
             } else {
                 ProgressView()
             }
             
         case .success(let values) where values.isEmpty:
             EmptyPlaceholderView(text: "No results", image: Image(systemName: "film"))
+                .foregroundStyle(.white)
             
         case .failure(let error):
             RetryView(text: error.localizedDescription, retryAction: {
@@ -65,16 +88,19 @@ struct MovieRowView: View {
             VStack(alignment: .leading) {
                 Text(movie.title)
                     .font(.headline)
+                    .foregroundStyle(.white)
                 
                 Text(movie.yearText)
                     .font(.subheadline)
+                    .foregroundStyle(.white)
                 
-                Spacer()
+                //Spacer()
                 
                 Text(movie.ratingText)
                     .foregroundColor(.yellow)
             }
         }
+        
     }
 }
 
