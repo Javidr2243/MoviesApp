@@ -9,8 +9,9 @@ import SwiftUI
 
 struct SearchBarView: View {
     
-    @State private var searchText: String = ""
-    var searchBarName: String
+    @Binding var searchText: String
+    var searchBarName = "Search username"
+    
     
     var body: some View {
         HStack {
@@ -20,7 +21,7 @@ struct SearchBarView: View {
             if searchText.isEmpty {
                 Text(searchBarName)
                     .foregroundColor(.lightGray)
-                    .font(.system(size: 18))
+                    .font(.system(size: 16))
             }
 
             TextField("", text: $searchText)
@@ -39,5 +40,5 @@ struct SearchBarView: View {
 
 
 #Preview {
-    SearchBarView(searchBarName: "Search username")
+    SearchBarView(searchText: .constant(""))
 }

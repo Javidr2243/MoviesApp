@@ -14,6 +14,8 @@ struct NewWatchpartyMembers: View {
     @State var combinedRatings = ["Sabrina (1995)": 4.0, "Clueless (1995)": 4.0]
     @State private var selectedSets: [Bool]
     @State private var nextView = false
+    @State private var searchText = ""
+    
     init(group: MoviesGroup) {
         self.group = group
         self._selectedSets = State(initialValue: Array(repeating: false, count: group.persons.count))
@@ -37,14 +39,14 @@ struct NewWatchpartyMembers: View {
                     .foregroundColor(.white)
                     .font(.title2)
                 
-                SearchBarView(searchBarName: "Search username")
+                SearchBarView(searchText: $searchText)
                 
                 
                 ScrollView {
                     VStack(spacing: 10) {
-                        ForEach(group.persons.indices, id: \.self) { index in
+                        ForEach(filteredPersons.indices, id: \.self) { index in
                             HStack {
-                                UserInfoView(userFullName: group.persons[index], username: "")
+                                UserInfoView(userFullName: filteredPersons[index], username: "")
                                 //Spacer()
                                 Toggle("", isOn: $selectedSets[index])
                                     .labelsHidden()
@@ -88,7 +90,13 @@ struct NewWatchpartyMembers: View {
             .padding()
         }
     }
-    
+    private var filteredPersons: [String] {
+            if searchText.isEmpty {
+                return group.persons
+            } else {
+                return group.persons.filter { $0.localizedCaseInsensitiveContains(searchText) }
+            }
+        }
     
     private func getSelectedSets() -> [[String: Double]] {
         var selectedSetsList = [[String: Double]]()
