@@ -9,10 +9,12 @@ import SwiftUI
 
 struct MovieAndGroupsView: View {
     var body: some View {
-        
-            MovieHomeView() // Place your content here
-        
+        VStack {
+            MovieHomeView()
+        }
+        .preferredColorScheme(.dark)
     }
+       
 }
 
 #Preview {

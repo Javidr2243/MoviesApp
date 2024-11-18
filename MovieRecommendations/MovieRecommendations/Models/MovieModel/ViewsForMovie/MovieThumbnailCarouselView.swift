@@ -28,7 +28,7 @@ struct MovieThumbnailCarouselView: View {
                 .padding(.vertical, 8)
             }
         }
-        .background(Color.black) // Sets a black background on the VStack
+        .background(Color.black) 
     }
 }
 

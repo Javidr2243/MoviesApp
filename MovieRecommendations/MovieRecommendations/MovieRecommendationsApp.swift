@@ -17,10 +17,14 @@ struct MovieRecommendationsApp: App {
         return container
     }()
     
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                
         }
         .modelContainer(container)
     }
+    
+    
 }
