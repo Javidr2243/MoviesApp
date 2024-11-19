@@ -11,6 +11,7 @@ struct MovieAndGroupsView: View {
     var body: some View {
         VStack {
             MovieHomeView()
+            
         }
         .preferredColorScheme(.dark)
     }

@@ -14,30 +14,52 @@ struct MovieHomeView: View {
     var body: some View {
         ZStack {
             Color.black
-                .ignoresSafeArea() // Sets the entire screen background to black
-            VStack{
+                .ignoresSafeArea()
+            VStack {
                 List {
                     VStack(alignment: .leading) {
                         Text("Watch Next")
                             .font(.largeTitle)
                             .fontWeight(.bold)
-                            .foregroundStyle(.white)
-                            .padding([.leading, .bottom], 8) // Adjust spacing below the title if needed
+                            .foregroundColor(.white)
+                            .padding([.leading, .bottom], 8)
                         
-                        if let firstSection = movieHomeState.sections.first {
+                        if movieHomeState.sections.indices.contains(0) {
+                            let firstSection = movieHomeState.sections[0]
                             MovieThumbnailCarouselView(
                                 movies: firstSection.movies,
                                 thumbnailType: firstSection.thumbnailType
                             )
-                            .listRowInsets(EdgeInsets()) // Removes all padding around the row
-                            .background(Color.black) // Ensures each row background is black
+                            .listRowInsets(EdgeInsets())
+                            .background(Color.black)
                         }
                     }
-                    .listRowInsets(EdgeInsets()) // Ensures no padding around the VStack
-                    .background(Color.black) // Black background for VStack inside List
+                    .listRowInsets(EdgeInsets())
+                    .background(Color.black)
+                    
+                    
+                    VStack(alignment: .leading) {
+                        Text("Popular")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .padding([.leading, .bottom], 8)
+                        
+                        if movieHomeState.sections.indices.contains(1) {
+                            let secondSection = movieHomeState.sections[1]
+                            MovieThumbnailCarouselView(
+                                movies: secondSection.movies,
+                                thumbnailType: secondSection.thumbnailType
+                            )
+                            .listRowInsets(EdgeInsets())
+                            .background(Color.black)
+                        }
+                    }
+                    .padding(.top,40)
+                    .listRowInsets(EdgeInsets())                    .background(Color.black)
                 }
                 .listStyle(.plain)
-                .background(Color.clear) // Makes the List background transparent
+                .background(Color.clear)
                 .task { loadMovies(invalidateCache: false) }
                 .refreshable { loadMovies(invalidateCache: true) }
                 .overlay(
@@ -64,3 +86,4 @@ struct MovieListView_Previews: PreviewProvider {
         }
     }
 }
+

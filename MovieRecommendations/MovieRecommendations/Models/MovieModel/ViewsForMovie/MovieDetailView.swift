@@ -185,6 +185,6 @@ struct MovieDetailView_Previews: PreviewProvider {
         NavigationView {
             MovieDetailView(movieId: Movie.stubbedMovie.id, movieTitle: "The Godfather 2")
         }
-        .preferredColorScheme(.dark) // Ensure preview is in dark mode
+        .preferredColorScheme(.dark) 
     }
 }
